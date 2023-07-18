@@ -65,4 +65,26 @@ public class CustomerController {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deleteCustomer(@PathVariable("id") String customerId){
+        System.out.println(customerId);
+        try(Connection connection = pool.getConnection()){
+            PreparedStatement stm = connection.prepareStatement("DELETE FROM customer WHERE id = ?");
+            stm.setString(1,customerId);
+            int affectedRows = stm.executeUpdate();
+            if (affectedRows == 1){
+                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            }else{
+                return new ResponseEntity<>("ID not found", HttpStatus.NOT_FOUND);
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+            if (e.getSQLState().equals("23000")){
+                return new ResponseEntity<>(e.getMessage(), HttpStatus.CONFLICT);
+            }else{
+                return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+            }
+        }
+    }
 }
