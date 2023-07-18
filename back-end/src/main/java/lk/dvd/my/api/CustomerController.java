@@ -20,7 +20,6 @@ public class CustomerController {
 
     @PostMapping
     public ResponseEntity<?> saveCustomer(@RequestBody CustomerDTO customer) {
-        System.out.println(customer);
         try(Connection connection = pool.getConnection()){
             PreparedStatement stm = connection.prepareStatement("INSERT INTO customer (name, address, contact_number) VALUES (?,?,?)", Statement.RETURN_GENERATED_KEYS);
             stm.setString(1, customer.getName());
@@ -83,6 +82,25 @@ public class CustomerController {
             if (e.getSQLState().equals("23000")){
                 return new ResponseEntity<>(e.getMessage(), HttpStatus.CONFLICT);
             }else{
+                return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+            }
+        }
+    }
+
+    @PatchMapping("/{id}")
+    public ResponseEntity<?> updateCustomer(@RequestBody CustomerDTO customer,@PathVariable("id") int customerId) {
+        try(Connection connection = pool.getConnection()){
+            PreparedStatement stm = connection.prepareStatement("UPDATE customer SET name= ?, address = ?, contact_number = ? WHERE id = ?");
+            stm.setString(1, customer.getName());
+            stm.setString(2, customer.getAddress());
+            stm.setString(3, customer.getContactNumber());
+            stm.setInt(4,customerId);
+            stm.executeUpdate();
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }catch (SQLException e){
+            if (e.getSQLState().equals("23000")){
+                return new ResponseEntity<>(e.getMessage(), HttpStatus.CONFLICT);
+            }else {
                 return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
             }
         }
