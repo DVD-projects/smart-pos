@@ -6,16 +6,17 @@
     <!--    <link rel="stylesheet" href="node_modules/normalize.css/normalize.css">-->
 <!--    <link rel="stylesheet" href="css/reset.css">-->
     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="node_modules/animate.css/animate.min.css">
     <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="css/">
+    <link rel="stylesheet" href="css/manager-customer.css">
     <script defer src="node_modules/jquery/dist/jquery.min.js"></script>
     <script defer src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
     <script defer src="node_modules/@popperjs/core/dist/umd/popper.min.js"></script>
     <script type="module" src="js/main.js"></script>
     <script type="module" src="js/manage-customer.js"></script>
 </head>
-<body class="container-xl gx-0 border-end border-start">
-    <h1 id="title" class="text-center p-2">POS SYSTEM</h1>
+<body class="container-fluid gx-0 border-end border-start">
+    <h1 id="title" class="text-center p-4">POS SYSTEM</h1>
     <nav class="border-end">
         <div class="d-flex flex-column flex-shrink-0 bg-body-tertiary" style="width: 6.5rem;">
             <a href="/" class="d-block p-3 link-body-emphasis text-decoration-none" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Icon-only">
@@ -59,7 +60,7 @@
     <main>
         <section class="d-flex p-2 justify-content-between border-bottom">
             <h1>Manage Customers</h1>
-            <button id="btn-new-customer" type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            <button id="btn-new-customer" type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#customer-modal">
                 New Customer
             </button>
         </section>
@@ -108,7 +109,7 @@
         </section>
     </main>
     <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="customer-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -123,28 +124,28 @@
                     </div>
                     <div class="mb-3">
                         <label for="txt-name" class="form-label">Customer Name</label>
-                        <input type="text" class="form-control text-center" id="txt-name" placeholder="Eg: Kasun Sampath">
+                        <input type="text" class="form-control text-center animate__animated" id="txt-name" placeholder="Eg: Kasun Sampath">
                         <div class="invalid-feedback">
                             Name can't be empty
                         </div>
                     </div>
                     <div class="mb-3">
                         <label for="txt-address" class="form-label">Customer Address</label>
-                        <input type="text" class="form-control text-center" id="txt-address" placeholder="Eg: Galle road, Panadura">
+                        <input type="text" class="form-control text-center animate__animated" id="txt-address" placeholder="Eg: Galle road, Panadura">
                         <div class="invalid-feedback">
                             Address can't be empty
                         </div>
                     </div>
                     <div class="mb-3">
                         <label for="txt-contact" class="form-label">Customer Name</label>
-                        <input type="text" class="form-control text-center" id="txt-contact" placeholder="Eg: 071-1234567">
+                        <input type="text" class="form-control text-center animate__animated" id="txt-contact" placeholder="Eg: 071-1234567">
                         <div class="invalid-feedback">
                             Contact can't be empty
                         </div>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary">Save changes</button>
+                    <button id="btn-save" type="button" class="btn btn-primary">Save changes</button>
                 </div>
             </div>
         </div>
