@@ -13,6 +13,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("customers")
+@CrossOrigin
 public class CustomerController {
 
     @Autowired
@@ -20,6 +21,7 @@ public class CustomerController {
 
     @PostMapping
     public ResponseEntity<?> saveCustomer(@RequestBody CustomerDTO customer) {
+        System.out.println(customer);
         try(Connection connection = pool.getConnection()){
             PreparedStatement stm = connection.prepareStatement("INSERT INTO customer (name, address, contact_number) VALUES (?,?,?)", Statement.RETURN_GENERATED_KEYS);
             stm.setString(1, customer.getName());
