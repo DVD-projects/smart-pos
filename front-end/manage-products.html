@@ -2,9 +2,208 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Pos System-Products</title>
+    <!--    <link rel="stylesheet" href="node_modules/normalize.css/normalize.css">-->
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/manage-product.css">
+    <script defer src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script defer src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script defer src="node_modules/@popperjs/core/dist/umd/popper.min.js"></script>
+    <script type="module" src="js/main.js"></script>
+    <script type="module" src="js/manage-product.js"></script>
 </head>
-<body>
-
+<body class="container-fluid gx-0 border-end border-start">
+    <h1 id="title" class="text-center p-4">POS SYSTEM</h1>
+    <nav class="border-end">
+        <div class="d-flex flex-column flex-shrink-0 bg-body-tertiary" style="width: 6.5rem;">
+            <a href="/" class="d-block p-3 link-body-emphasis text-decoration-none" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Icon-only">
+                <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="orange" class="bi bi-bag-check-fill ms-3" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M10.5 3.5a2.5 2.5 0 0 0-5 0V4h5v-.5zm1 0V4H15v10a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V4h3.5v-.5a3.5 3.5 0 1 1 7 0zm-.646 5.354a.5.5 0 0 0-.708-.708L7.5 10.793 6.354 9.646a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0l3-3z"/>
+                </svg>
+                <span class="visually-hidden">Icon-only</span>
+            </a>
+            <ul class="nav nav-pills nav-flush flex-column mb-auto text-center">
+                <li class="nav-item pt-2">
+                    <a href="index.html" title="Home" class="nav-link py-3 border-bottom rounded-0" aria-current="page" data-bs-toggle="tooltip" data-bs-placement="right" aria-label="Home" data-bs-original-title="Home">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="orange" class="bi bi-house" viewBox="0 0 16 16">
+                            <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.707 1.5ZM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5 5 5Z"/>
+                        </svg>
+                    </a>
+                </li>
+                <li>
+                    <a href="manage-customers.html" title="Manage Customers" class="nav-link py-3 border-bottom rounded-0" data-bs-toggle="tooltip" data-bs-placement="right" aria-label="Dashboard" data-bs-original-title="Dashboard">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="orange" class="bi bi-people" viewBox="0 0 16 16">
+                            <path d="M15 14s1 0 1-1-1-4-5-4-5 3-5 4 1 1 1 1h8Zm-7.978-1A.261.261 0 0 1 7 12.996c.001-.264.167-1.03.76-1.72C8.312 10.629 9.282 10 11 10c1.717 0 2.687.63 3.24 1.276.593.69.758 1.457.76 1.72l-.008.002a.274.274 0 0 1-.014.002H7.022ZM11 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4Zm3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0ZM6.936 9.28a5.88 5.88 0 0 0-1.23-.247A7.35 7.35 0 0 0 5 9c-4 0-5 3-5 4 0 .667.333 1 1 1h4.216A2.238 2.238 0 0 1 5 13c0-1.01.377-2.042 1.09-2.904.243-.294.526-.569.846-.816ZM4.92 10A5.493 5.493 0 0 0 4 13H1c0-.26.164-1.03.76-1.724.545-.636 1.492-1.256 3.16-1.275ZM1.5 5.5a3 3 0 1 1 6 0 3 3 0 0 1-6 0Zm3-2a2 2 0 1 0 0 4 2 2 0 0 0 0-4Z"/>
+                        </svg>
+                    </a>
+                </li>
+                <li>
+                    <a href="manage-products.html" title="Manage Products" class="nav-link active py-3 border-bottom rounded-0" data-bs-toggle="tooltip" data-bs-placement="right" aria-label="Orders" data-bs-original-title="Orders">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="orange" class="bi bi-diagram-3-fill" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M6 3.5A1.5 1.5 0 0 1 7.5 2h1A1.5 1.5 0 0 1 10 3.5v1A1.5 1.5 0 0 1 8.5 6v1H14a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-1 0V8h-5v.5a.5.5 0 0 1-1 0V8h-5v.5a.5.5 0 0 1-1 0v-1A.5.5 0 0 1 2 7h5.5V6A1.5 1.5 0 0 1 6 4.5v-1zm-6 8A1.5 1.5 0 0 1 1.5 10h1A1.5 1.5 0 0 1 4 11.5v1A1.5 1.5 0 0 1 2.5 14h-1A1.5 1.5 0 0 1 0 12.5v-1zm6 0A1.5 1.5 0 0 1 7.5 10h1a1.5 1.5 0 0 1 1.5 1.5v1A1.5 1.5 0 0 1 8.5 14h-1A1.5 1.5 0 0 1 6 12.5v-1zm6 0a1.5 1.5 0 0 1 1.5-1.5h1a1.5 1.5 0 0 1 1.5 1.5v1a1.5 1.5 0 0 1-1.5 1.5h-1a1.5 1.5 0 0 1-1.5-1.5v-1z"/>
+                        </svg>
+                    </a>
+                </li>
+                <li>
+                    <a href="place-order.html" title="Place Orders" class="nav-link py-3 border-bottom rounded-0" data-bs-toggle="tooltip" data-bs-placement="right" aria-label="Products" data-bs-original-title="Products">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="orange" class="bi bi-cart3" viewBox="0 0 16 16">
+                            <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                        </svg>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <main>
+        <section class="d-flex justify-content-between border-bottom p-2" data-bs-toggle="modal" data-bs-target="#product-modal">
+            <h1>Products</h1>
+            <button id="btn-new-item" class="btn btn-warning">New Item</button>
+        </section>
+        <section class="p-5">
+            <div id="item-container" class="border p-4 d-flex gap-3 flex-wrap">
+                <div class="border rounded-4 p-2 img">
+                    <div>
+                        <img src="https://m.media-amazon.com/images/I/71suJxdFFEL._AC_SL1500_.jpg" alt="">
+                    </div>
+                    <div class="d-flex flex-column align-items-center p-2">
+                        <label><b>Code: </b>I001</label>
+                        <label><b>Name: </b></label>
+                        <label><b>Unit Price: </b> 600.00</label>
+                        <label><b>Quantity: </b>20</label>
+                    </div>
+                </div>
+                <div class="border rounded-4 p-2 img">
+                    <div>
+                        <img src="https://image.coolblue.nl/624x351/content/833dedefc88b3b3b5d625577025398f6" alt="">
+                    </div>
+                    <div class="d-flex flex-column align-items-center p-2">
+                        <label><b>Code: </b>I001</label>
+                        <label><b>Name: </b></label>
+                        <label><b>Unit Price: </b> 600.00</label>
+                        <label><b>Quantity: </b>20</label>
+                    </div>
+                </div>
+                <div class="border rounded-4 p-2 img">
+                    <div>
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQAAqVz8alTvrqS933CAcglz63HyKwOvSLp-A&usqp=CAU" alt="">
+                    </div>
+                    <div class="d-flex flex-column align-items-center p-2">
+                        <label><b>Code: </b>I001</label>
+                        <label><b>Name: </b></label>
+                        <label><b>Unit Price: </b> 600.00</label>
+                        <label><b>Quantity: </b>20</label>
+                    </div>
+                </div>
+                <div class="border rounded-4 p-2 img">
+                    <div>
+                        <img src="data:image/jpeg;base64,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" alt="">
+                    </div>
+                    <div class="d-flex flex-column align-items-center p-2">
+                        <label><b>Code: </b>I001</label>
+                        <label><b>Name: </b></label>
+                        <label><b>Unit Price: </b> 600.00</label>
+                        <label><b>Quantity: </b>20</label>
+                    </div>
+                </div>
+                <div class="border rounded-4 p-2 img">
+                    <div>
+                        <img src="https://i5.walmartimages.com/asr/22b50342-15c5-4e52-83b8-6194af42fd16.3744fdd76aab16f2f17b18c53204c61c.jpeg" alt="">
+                    </div>
+                    <div class="d-flex flex-column align-items-center p-2">
+                        <label><b>Code: </b>I001</label>
+                        <label><b>Name: </b></label>
+                        <label><b>Unit Price: </b> 600.00</label>
+                        <label><b>Quantity: </b>20</label>
+                    </div>
+                </div>
+                <div class="border rounded-4 p-2 img">
+                    <div>
+                        <img src="https://image.coolblue.nl/624x351/content/833dedefc88b3b3b5d625577025398f6" alt="">
+                    </div>
+                    <div class="d-flex flex-column align-items-center p-2">
+                        <label><b>Code: </b>I001</label>
+                        <label><b>Name: </b></label>
+                        <label><b>Unit Price: </b> 600.00</label>
+                        <label><b>Quantity: </b>20</label>
+                    </div>
+                </div>
+                <div class="border rounded-4 p-2 img">
+                    <div>
+                        <img src="https://m.media-amazon.com/images/I/71suJxdFFEL._AC_SL1500_.jpg" alt="">
+                    </div>
+                    <div class="d-flex flex-column align-items-center p-2">
+                        <label><b>Code: </b>I001</label>
+                        <label><b>Name: </b></label>
+                        <label><b>Unit Price: </b> 600.00</label>
+                        <label><b>Quantity: </b>20</label>
+                    </div>
+                </div>
+                <div class="border rounded-4 p-2 img">
+                    <div>
+                        <img src="https://i5.walmartimages.com/asr/22b50342-15c5-4e52-83b8-6194af42fd16.3744fdd76aab16f2f17b18c53204c61c.jpeg" alt="">
+                    </div>
+                    <div class="d-flex flex-column align-items-center p-2">
+                        <label><b>Code: </b>I001</label>
+                        <label><b>Name: </b></label>
+                        <label><b>Unit Price: </b> 600.00</label>
+                        <label><b>Quantity: </b>20</label>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <!--modal-->
+    <div class="modal fade" id="product-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Add New Item</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <div class="mb-3">
+                        <label for="txt-code" class="form-label">Item Code</label>
+                        <input type="text" class="form-control text-center" id="txt-code" placeholder="Eg: I001">
+                    </div>
+                    <div class="mb-3">
+                        <label for="txt-name" class="form-label">Item Name</label>
+                        <input type="text" class="form-control text-center animate__animated" id="txt-name" placeholder="Eg: Mouse">
+                        <div class="invalid-feedback">
+                            Name can't be empty
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="txt-price" class="form-label">Unit Price</label>
+                        <input type="text" class="form-control text-center animate__animated" id="txt-price" placeholder="Eg: Rs.600.00">
+                        <div class="invalid-feedback">
+                            Address can't be empty
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="txt-quantity" class="form-label">Quantity</label>
+                        <input type="text" class="form-control text-center animate__animated" id="txt-quantity" placeholder="Eg: 10">
+                        <div class="invalid-feedback">
+                            Contact can't be empty
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="txt-img" class="form-label">Select Image</label>
+                        <input type="file" accept="image/*" id="txt-img" class="form-control text-center animate__animated" placeholder="Eg: 10">
+                        <div class="invalid-feedback">
+                            Contact can't be empty
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer d-flex justify-content-between">
+                    <div id="loader">
+                        <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
+                    </div>
+                    <button id="btn-save" type="button" class="btn btn-primary">Save Item</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

@@ -1,0 +1,17 @@
+
+#item-container{
+
+}
+
+img {
+    width: 200px;
+    height: 200px;
+}
+.img:hover{
+    scale: 1.1;
+}
+.img > div:last-child{
+    background-color: #dedede;
+    color: black;
+    border-radius: 10px;
+}

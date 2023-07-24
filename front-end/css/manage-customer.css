@@ -1,0 +1,11 @@
+#loader{
+    visibility: hidden;
+}
+
+.delete:hover{
+    fill: red;
+}
+
+.edit:hover{
+    fill: green;
+}
